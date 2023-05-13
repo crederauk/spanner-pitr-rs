@@ -1,0 +1,41 @@
+[package]
+name = "spanner-pitr"
+version = "0.1.3"
+edition = "2021"
+readme = "README.md"
+publish = false
+license = "Apache-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.70"
+async-recursion = "1.0.4"
+clap = { version = "4.1.13", features = ["derive"] }
+env_logger = "0.10.0"
+google-cloud-default = { version = "0.1.1", features = [
+    "spanner",
+], git="https://github.com/andrew-james-dev/google-cloud-rust.git", package = "google-cloud-default" }
+google-cloud-spanner = { git="https://github.com/andrew-james-dev/google-cloud-rust.git", package = "google-cloud-spanner" }
+google-cloud-googleapis = { git="https://github.com/andrew-james-dev/google-cloud-rust.git", package = "google-cloud-googleapis" }
+indicatif = "0.17.3"
+itertools = "0.10.5"
+log = "0.4.17"
+time = { version = "0.3.20", features = ["macros", "parsing", "formatting"] }
+tokio = { version = "1.26.0", features = ["rt-multi-thread"] }
+prost-types = "0.11"
+uuid = {version = "1.3.0", features = ["v4"] }
+
+[profile.release]
+lto = true
+strip = true
+
+[package.metadata.release]
+allow-branch = ["main"]
+push = false
+publish = false
+pre-release-commit-message = "release: {{prev_version}} → {{version}}"
+tag-message = "release: {{crate_name}} version {{version}}"
+pre-release-replacements = [
+  {file="README.md", search="Current release: [a-z0-9\\.-]+", replace="Current release: {{version}}"} ,
+]

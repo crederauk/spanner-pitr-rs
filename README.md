@@ -3,7 +3,7 @@
 Enhances [Point In Time Recovery (PITR)](https://cloud.google.com/spanner/docs/pitr) functionality for Google Cloud
 Spanner with timestamp detection support.
 
-Current release: 0.1.3
+Current release: 0.1.4
 
 ## Description
 

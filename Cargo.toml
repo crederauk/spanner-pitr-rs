@@ -13,9 +13,7 @@ anyhow = "1.0.70"
 async-recursion = "1.0.4"
 clap = { version = "4.1.13", features = ["derive"] }
 env_logger = "0.10.0"
-google-cloud-default = { version = "0.1.1", features = [
-    "spanner",
-], git="https://github.com/andrew-james-dev/google-cloud-rust.git", package = "google-cloud-default" }
+google-cloud-default = { features = ["spanner"], git="https://github.com/andrew-james-dev/google-cloud-rust.git", package = "google-cloud-default" }
 google-cloud-spanner = { git="https://github.com/andrew-james-dev/google-cloud-rust.git", package = "google-cloud-spanner" }
 google-cloud-googleapis = { git="https://github.com/andrew-james-dev/google-cloud-rust.git", package = "google-cloud-googleapis" }
 indicatif = "0.17.3"

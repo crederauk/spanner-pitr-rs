@@ -21,7 +21,7 @@ This command line utility provides the ability to identify the last point in tim
 
 ## Running the utility
 
-To build the latest version of the utility into a standalone executable, run `cargo build``. The compiled
+To build the latest version of the utility into a standalone executable, run `cargo build`. The compiled
 binary is then able to be run as a standalone CLI utility, and reasonable defaults are used wherever possible to
 minimise the need for configuration. To see the available commands and options, run:
 
@@ -31,8 +31,8 @@ minimise the need for configuration. To see the available commands and options, 
 
 When running the tool, ensure that valid credentials for a service account are provided using:
 
-- A JSON file whose path is specified by the GOOGLE_APPLICATION_CREDENTIALS environment variable.
-- A JSON file in a location known to the gcloud command-line tool. On Windows, this is %APPDATA%/gcloud/application_default_credentials.json. On other systems, $HOME/.config/gcloud/application_default_credentials.json.
+- A JSON file whose path is specified by the `GOOGLE_APPLICATION_CREDENTIALS` environment variable.
+- A JSON file in a location known to the gcloud command-line tool. On Windows, this is `%APPDATA%/gcloud/application_default_credentials.json`. On other systems, `$HOME/.config/gcloud/application_default_credentials.json`.
 - The metadata server on GCE.
 
 ### Detecting pre-corruption timestamps
@@ -47,7 +47,7 @@ least one row of data in it), run the following command:
     --project test-project \
     --instance test-instance \
     --database test-db \
-    query "SELECT true FROM test_table LIMIT 1" \
+    query "SELECT true FROM deleted_table LIMIT 1" \
     --start 2023-03-01T23:34:43.023443Z # This is optional, to speed up detection time
     --accuracy 10 # This is optional (in ms), to specify the desired accuracy.
 ```
@@ -61,9 +61,7 @@ within the granularity that has been found.
 
 ## Building & testing
 
-Tests can be executed locally using `cargo`, but require a remote Spanner instance to be available (since the emulator
-does not yet support this functionality). Prior to running the tests, ensure that the following environment variables
-have been set:
+Tests can be executed locally using `cargo`, but require a remote Spanner instance to be available. Prior to running the tests, ensure that the following environment variables have been set:
 
 ```shell
 export GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials.json;
